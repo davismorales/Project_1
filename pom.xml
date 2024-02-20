@@ -47,6 +47,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.14.1</version>
+        </dependency>
 	</dependencies>
 
     <build>
@@ -119,7 +125,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.4.2</version>
@@ -143,7 +149,7 @@
                         <version>1.4.2</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 
