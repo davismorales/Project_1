@@ -21,15 +21,15 @@
 .navbar-logo {
   color: #fff;
   justify-self: start;
-  margin-left: 20px;
+  margin-left: 15px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
 }
 
-.fa-typo3 {
+.fa-basketball {
   margin-left: 0.5rem;
   font-size: 1.8rem;
 }
