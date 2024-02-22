@@ -10,33 +10,33 @@ function Cards() {
         <div className="cards__wrapper">
           <ul className="cards__items">
             <CardItem
-              src={require("../../assets/images/img-9.jpg")}
+              src={require("../../assets/images/Grizzlies.jpg")}
               text="Explore the hidden waterfall deep inside the Amazon Jungle"
               label="Adventure"
-              path="/services"
+              path="/"
             />
             <CardItem
-              src={require("../../assets/images/img-2.jpg")}
+              src={require("../../assets/images/Warriors.jpg")}
               text="Travel through the Islands of Bali in a Private Cruise"
               label="Luxury"
-              path="/services"
+              path="/"
             />
           </ul>
           <ul className="cards__items">
             <CardItem
-              src={require("../../assets/images/img-3.jpg")}
+              src={require("../../assets/images/Lakers.jpg")}
               text="Set Sail in the Atlantic Ocean visiting Uncharted Waters"
               label="Mystery"
-              path="/services"
+              path="/"
             />
             <CardItem
-              src={require("../../assets/images/img-4.jpg")}
+              src={require("../../assets/images/Clippers.jpg")}
               text="Experience Football on Top of the Himilayan Mountains"
               label="Adventure"
               path="/products"
             />
             <CardItem
-              src={require("../../assets/images/img-8.jpg")}
+              src={require("../../assets/images/Wizards.jpg")}
               text="Ride through the Sahara Desert on a guided camel tour"
               label="Adrenaline"
               path="/sign-up"

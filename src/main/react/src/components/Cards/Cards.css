@@ -30,6 +30,7 @@ h1 {
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
+  flex-direction: column;
 }
 
 .cards__item__link {
@@ -115,4 +116,17 @@ h1 {
   .cards__item {
     margin-bottom: 2rem;
   }
+}
+
+.cards__item__img-wrap {
+  display: flex;
+}
+
+.cards__item__img-wrap .cards__item__pic-wrap {
+  flex: 1;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.cards__item__img-wrap .cards__item__pic-wrap:last-child {
+  margin-right: 0;
 }

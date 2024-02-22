@@ -16,6 +16,7 @@ function HeroSection() {
       <p>What are you waiting for?</p>
       <div className="hero-btns">
         <Button
+          path="/"
           className="btns"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
@@ -23,6 +24,7 @@ function HeroSection() {
           GET STARTED
         </Button>
         <Button
+          path="/"
           className="btns"
           buttonStyle="btn--primary"
           buttonSize="btn--large"
