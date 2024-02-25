@@ -11,12 +11,14 @@ function Cards() {
           <ul className="cards__items">
             <CardItem
               src={require("../../assets/images/Grizzlies.jpg")}
+              additionalSrc={require("../../assets/images/Warriors.jpg")}
               text="Explore the hidden waterfall deep inside the Amazon Jungle"
               label="Adventure"
               path="/"
             />
             <CardItem
               src={require("../../assets/images/Warriors.jpg")}
+              additionalSrc={require("../../assets/images/Warriors.jpg")}
               text="Travel through the Islands of Bali in a Private Cruise"
               label="Luxury"
               path="/"

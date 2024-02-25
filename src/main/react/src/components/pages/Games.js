@@ -39,9 +39,11 @@ const Games = () => {
                 {chunk.map((item, innerIndex) => (
                   <CardItem
                     key={innerIndex} // Ensure each item has a unique key
-                    src={item.src} // Use item properties from your response
+                    src={require(`../../assets/images/${item.teams.visitors.nickname}.jpg`)}
+                    additionalSrc={require(`../../assets/images/${item.teams.home.nickname}.jpg`)} // Use item properties from your response
                     text={`${item.teams.visitors.nickname} @ ${item.teams.home.nickname}`}
-                    label={`${item.arena.city}, ${item.arena.state}`}
+                    label={item.scores.visitors.points}
+                    additionalLabel={item.scores.home.points}
                     path={item.path}
                   />
                 ))}

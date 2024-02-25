@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.nbaApi.model.PlayerSearchByTeam;
 import com.api.nbaApi.service.NbaApiWebServiceImpl;
-import com.mybatis.datediff.model.DateDiff;
 
 @RestController
 @RequestMapping(value = "/nbaApi")
@@ -18,8 +18,8 @@ public class NbaApiWebController {
 	NbaApiWebServiceImpl nbaApiWebServiceImpl;
 
 	@RequestMapping(value = "/getPlayers", method = RequestMethod.POST, consumes = { "application/json" })
-	public String getPlayers(@RequestBody DateDiff dateDiff) throws IllegalAccessException, InvocationTargetException {
-		return nbaApiWebServiceImpl.getPlayers();
+	public String getPlayers(@RequestBody PlayerSearchByTeam team) throws IllegalAccessException, InvocationTargetException {
+		return nbaApiWebServiceImpl.getPlayers(team.getTeamId());
 	}
 
 	@RequestMapping(value = "/getTomorrowGames")

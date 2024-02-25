@@ -44,7 +44,7 @@ function Players() {
   async function getPlayers() {
     debugger;
     var formData = {
-      team: team.value,
+      teamId: team.value,
     };
 
     await fetch("/nbaApi/getPlayers", {

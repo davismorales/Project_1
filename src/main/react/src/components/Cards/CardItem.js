@@ -15,7 +15,7 @@ function CardItem(props) {
             </figure>
             <figure
               className="cards__item__pic-wrap"
-              data-category={props.label}
+              data-category={props.additionalLabel}
             >
               <img
                 src={props.additionalSrc} // Assuming additionalSrc is the prop for the additional image source
