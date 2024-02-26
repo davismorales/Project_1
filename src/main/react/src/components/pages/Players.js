@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "../../App.css";
 import "../Hero/HeroSection.css";
-import { Button } from "../Button/Button";
 import Select from "react-select";
 
 function Players() {
   const [team, setTeam] = useState();
-  const [returnData, setReturnData] = useState(null);
+  const [data, setReturnData] = useState(null);
 
   const teams = [
     { value: "1", label: "Atlanta Hawks" },
@@ -41,10 +40,10 @@ function Players() {
     { value: "41", label: "Washington Wizards" },
   ];
 
-  async function getPlayers() {
-    debugger;
+  const getPlayers = async (selectedOption) => {
+    setTeam(selectedOption);
     var formData = {
-      teamId: team.value,
+      teamId: selectedOption.value,
     };
 
     await fetch("/nbaApi/getPlayers", {
@@ -59,87 +58,59 @@ function Players() {
         console.log(data);
         setReturnData(data);
       });
-  }
+  };
 
   return (
-    <div className="hero-container">
-      <Select
-        onChange={(selectedOption) => setTeam(selectedOption)}
-        styles={{
-          control: (baseStyles, state) => ({
-            ...baseStyles,
-            width: "300px",
-          }),
-        }}
-        options={teams}
-        value={team}
-      />
-
-      <div className="hero-btns">
-        <Button
-          path="/players"
-          className="btns"
-          buttonStyle="btn--primary"
-          buttonSize="btn--large"
-          onClick={getPlayers}
-        >
-          Get Players
-        </Button>
+    <div className="player-container">
+      <div className="player-select">
+        <Select
+          onChange={(selectedOption) => getPlayers(selectedOption)}
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              width: "300px",
+            }),
+          }}
+          options={teams}
+          value={team}
+        />
       </div>
 
-      {returnData !== null && (
-        <div
-          class="row form-group col-md-12 col-sm-12 justify-content-center results"
-          align="center"
-        >
-          <div
-            class="row form-group col-md-12 col-sm-12  justify-content-center"
-            align="center"
-          >
-            <label class="control-label justify-content-center">
-              {returnData.years}
-            </label>
-          </div>
-          <div
-            class="row form-group col-md-12 col-sm-12  justify-content-center"
-            align="center"
-          >
-            <label class="control-label justify-content-center">
-              {returnData.months}
-            </label>
-          </div>
-          <div
-            class="row form-group col-md-12 col-sm-12  justify-content-center"
-            align="center"
-          >
-            <label class="control-label justify-content-center">
-              {returnData.days}
-            </label>
-          </div>
-          <div
-            class="row form-group col-md-12 col-sm-12  justify-content-center"
-            align="center"
-          >
-            <label class="control-label justify-content-center">
-              {returnData.hours}
-            </label>
-          </div>
-          <div
-            class="row form-group col-md-12 col-sm-12  justify-content-center"
-            align="center"
-          >
-            <label class="control-label justify-content-center">
-              {returnData.minutes}
-            </label>
-          </div>
-          <div
-            class="row form-group col-md-12 col-sm-12  justify-content-center"
-            align="center"
-          >
-            <label class="control-label justify-content-center">
-              {returnData.seconds}
-            </label>
-          </div>
+      {data !== null && (
+        <div class="roster-container">
+          <table class="roster-table">
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>JERSEY</th>
+                <th>POSITION</th>
+                <th>BIRTH DATE</th>
+                <th>HEIGHT</th>
+                <th>WEIGHT</th>
+                <th>COLLEGE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.response.map((player) => (
+                <tr key={player.id}>
+                  {/* <td>
+                    <img src={player.image} alt={player.name} />
+                  </td> */}
+                  <td>
+                    {player.firstname} {player.lastname}
+                  </td>
+                  <td>{player.leagues.standard.jersey}</td>
+                  <td>{player.leagues.standard.pos}</td>
+                  <td>{player.birth.date}</td>
+                  <td>
+                    {player.height.feets}' {player.height.inches}
+                  </td>
+                  <td>{player.weight.pounds}</td>
+                  <td>{player.college}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

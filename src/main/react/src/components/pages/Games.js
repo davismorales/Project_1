@@ -35,10 +35,9 @@ const Games = () => {
         <div className="cards__container">
           <div className="cards__wrapper">
             {chunkArray(responseData, 3).map((chunk, index) => (
-              <ul key={index} className="cards__items">
+              <ul className="cards__items">
                 {chunk.map((item, innerIndex) => (
                   <CardItem
-                    key={innerIndex} // Ensure each item has a unique key
                     src={require(`../../assets/images/${item.teams.visitors.nickname}.jpg`)}
                     additionalSrc={require(`../../assets/images/${item.teams.home.nickname}.jpg`)} // Use item properties from your response
                     text={`${item.teams.visitors.nickname} @ ${item.teams.home.nickname}`}
