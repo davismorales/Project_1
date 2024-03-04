@@ -1,50 +1,45 @@
 import React, { useState, useEffect } from "react";
 import CardItem from "../Cards/CardItem";
 import "../Cards/Cards.css";
+import "./Games.css";
 import { DatePicker } from "antd";
 
 const Games = () => {
   const [responseData, setResponseData] = useState([]);
   const [date, setDate] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
+      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+    }
+  };
 
   useEffect(() => {
-    // Assuming responseData is fetched from an API
-    // Replace this with your API call logic
-    // const fetchData = async () => {
-    //   const response = await fetch("/nbaApi/getTomorrowGames");
-    //   const data = await response.json();
-    //   console.log(data);
-    //   setResponseData(data.response);
-    // };
-
-    // fetchData();
     let date = new Date();
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    setDate(formattedDate)
     getGames(date, formattedDate);
   }, []);
 
   const getGames = async (selectedDate, dateString) => {
-    console.log(selectedDate)
-    console.log(dateString)
-    setDate(selectedDate)
-    // const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    setIsLoading(true)
+    setDate(dateString)
 
-    let formData = {
-      date: dateString,
-    };
+    let url = `https://api-nba-v1.p.rapidapi.com/games?date=${dateString}`;
 
-    // await fetch("/nbaApi/getTomorrowGames", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setResponseData(data.response);
-    // });
+    try {
+      const response = await fetch(url, options);
+      const responseText = await response.text();
+      const responseJson = JSON.parse(responseText)
+      setResponseData(responseJson.response);
+    } catch (error) {
+      console.error(error);
+    }
+
+    setIsLoading(false)
   };
 
   // Function to chunk the responseData into arrays of size 3
@@ -60,28 +55,38 @@ const Games = () => {
   return (
     <>
       <div className="cards">
-        <h1>Yesterday's Game Results</h1>
-        <div className="container">
+        <h1>Game Results from {date}</h1>
+        <div className="datepicker-container">
           <DatePicker onChange={getGames} />
         </div>
-        <div className="cards__container">
-          <div className="cards__wrapper">
-            {chunkArray(responseData, 1).map((chunk, index) => (
-              <ul className="cards__items">
-                {chunk.map((item, innerIndex) => (
-                  <CardItem
-                    src={require(`../../assets/images/${item.teams.visitors.nickname}.jpg`)}
-                    additionalSrc={require(`../../assets/images/${item.teams.home.nickname}.jpg`)} // Use item properties from your response
-                    text={`${item.teams.visitors.nickname} @ ${item.teams.home.nickname}`}
-                    label={item.scores.visitors.points}
-                    additionalLabel={item.scores.home.points}
-                    path={item.path}
-                  />
-                ))}
-              </ul>
-            ))}
-          </div>
+        <div>
+          {isLoading ? (
+            <div className="loader-container">
+            </div>
+          ) : (
+            <div>
+              <div className="cards__container">
+                <div className="cards__wrapper">
+                  {chunkArray(responseData, 3).map((chunk, index) => (
+                    <ul className="cards__items">
+                      {chunk.map((item, innerIndex) => (
+                        <CardItem
+                          src={require(`../../assets/images/${item.teams.visitors.nickname}.jpg`)}
+                          additionalSrc={require(`../../assets/images/${item.teams.home.nickname}.jpg`)}
+                          text={`${item.teams.visitors.nickname} @ ${item.teams.home.nickname}`}
+                          label={item.scores.visitors.points}
+                          additionalLabel={item.scores.home.points}
+                          path={item.path}
+                        />
+                      ))}
+                    </ul>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+
       </div>
     </>
   );

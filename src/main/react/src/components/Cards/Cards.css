@@ -3,6 +3,7 @@
   background: #fff;
   background: url("../../assets/images/nba-logo.jpg") center center/cover
     no-repeat;
+  min-height: 100vh;
 }
 
 h1 {
@@ -36,7 +37,7 @@ h1 {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  width: 400px; /* Ensures each item can't exceed the available space */
+  width: 26vw; /* Ensures each item can't exceed the available space */
 }
 
 .cards__item__img {
@@ -137,10 +138,4 @@ h1 {
 
 .cards__item__img-wrap .cards__item__pic-wrap:last-child {
   margin-right: 0;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

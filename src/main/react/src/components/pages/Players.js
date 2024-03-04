@@ -40,24 +40,40 @@ function Players() {
     { value: "41", label: "Washington Wizards" },
   ];
 
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
+      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+    }
+  };
+
   const getPlayers = async (selectedOption) => {
     setTeam(selectedOption);
-    var formData = {
-      teamId: selectedOption.value,
-    };
 
-    await fetch("/nbaApi/getPlayers", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setReturnData(data);
-      });
+    let url = `https://api-nba-v1.p.rapidapi.com/players?team=${selectedOption.value}&season=2023`;
+
+    try {
+      const response = await fetch(url, options);
+      const responseText = await response.text();
+      const responseJson = JSON.parse(responseText);
+      setReturnData(responseJson);
+    } catch (error) {
+      console.error(error);
+    }
+
+    // await fetch("/nbaApi/getPlayers", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setReturnData(data);
+    //   });
   };
 
   return (

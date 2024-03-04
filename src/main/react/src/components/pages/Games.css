@@ -1,0 +1,15 @@
+.datepicker-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-container {
+    height: 60vh;
+    position: relative;
+    background:
+        url("../../assets/images/basketball.gif") center
+        no-repeat;
+    z-index: 1;
+}
