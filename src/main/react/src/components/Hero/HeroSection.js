@@ -6,12 +6,12 @@ import { Button } from "../Button/Button";
 function HeroSection() {
   return (
     <div className="hero-container">
-      <video
+      {/* <video
         src={require("../../assets/videos/ja_dunks.mp4")}
         autoPlay
         loop
         muted
-      />
+      /> */}
       <h1>ADVENTURE AWAITS</h1>
       <p>What are you waiting for?</p>
       <div className="hero-btns">

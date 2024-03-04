@@ -4,19 +4,43 @@ import "../Cards/Cards.css";
 
 const Games = () => {
   const [responseData, setResponseData] = useState([]);
+  const [date, setDate] = useState();
 
   useEffect(() => {
     // Assuming responseData is fetched from an API
     // Replace this with your API call logic
-    const fetchData = async () => {
-      const response = await fetch("/nbaApi/getTomorrowGames");
-      const data = await response.json();
-      console.log(data);
-      setResponseData(data.response);
+    // const fetchData = async () => {
+    //   const response = await fetch("/nbaApi/getTomorrowGames");
+    //   const data = await response.json();
+    //   console.log(data);
+    //   setResponseData(data.response);
+    // };
+
+    // fetchData();
+    getGames(new Date());
+  }, []);
+
+  const getGames = async (selectedDate) => {
+    setDate(selectedDate)
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+
+    let formData = {
+      date: formattedDate,
     };
 
-    fetchData();
-  }, []);
+    await fetch("/nbaApi/getTomorrowGames", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setResponseData(data.response);
+    });
+  }
 
   // Function to chunk the responseData into arrays of size 3
   const chunkArray = (arr, size) => {
