@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardItem from "../Cards/CardItem";
 import "../Cards/Cards.css";
+import { DatePicker } from "antd";
 
 const Games = () => {
   const [responseData, setResponseData] = useState([]);
@@ -17,30 +18,34 @@ const Games = () => {
     // };
 
     // fetchData();
-    getGames(new Date());
+    let date = new Date();
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    getGames(date, formattedDate);
   }, []);
 
-  const getGames = async (selectedDate) => {
+  const getGames = async (selectedDate, dateString) => {
+    console.log(selectedDate)
+    console.log(dateString)
     setDate(selectedDate)
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    // const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
 
     let formData = {
-      date: formattedDate,
+      date: dateString,
     };
 
-    await fetch("/nbaApi/getTomorrowGames", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setResponseData(data.response);
-    });
-  }
+    // await fetch("/nbaApi/getTomorrowGames", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setResponseData(data.response);
+    // });
+  };
 
   // Function to chunk the responseData into arrays of size 3
   const chunkArray = (arr, size) => {
@@ -55,10 +60,13 @@ const Games = () => {
   return (
     <>
       <div className="cards">
-        <h1>Tomorrow's Slate of Games</h1>
+        <h1>Yesterday's Game Results</h1>
+        <div className="container">
+          <DatePicker onChange={getGames} />
+        </div>
         <div className="cards__container">
           <div className="cards__wrapper">
-            {chunkArray(responseData, 3).map((chunk, index) => (
+            {chunkArray(responseData, 1).map((chunk, index) => (
               <ul className="cards__items">
                 {chunk.map((item, innerIndex) => (
                   <CardItem

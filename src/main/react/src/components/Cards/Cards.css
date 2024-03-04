@@ -1,5 +1,5 @@
 .cards {
-  padding: 4rem;
+  padding: 2rem;
   background: #fff;
   background: url("../../assets/images/nba-logo.jpg") center center/cover
     no-repeat;
@@ -137,4 +137,10 @@ h1 {
 
 .cards__item__img-wrap .cards__item__pic-wrap:last-child {
   margin-right: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
