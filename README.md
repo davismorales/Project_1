@@ -1,46 +1,70 @@
-# ReactSpring
-React.js Frontend utilizing Spring Boot REST Backend <br>
+# Getting Started with Create React App
 
-Integrated Maven, NodeJS, and Tomcat Embedded Server <br>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Only requires locally installed JDK 1.8 and PostgreSQL DB url, username, and password <br>
+## Available Scripts
 
-MyBatis generates SQL Mappers and Objects mapped to any given Postgre DB Tables <br>
-<br><br>
+In the project directory, you can run:
 
-Core Requirements: <br> &emsp;
-(1st Link: Main download page) <br> &emsp;
-(2nd Link: Direct Windows 64 Bit Download)
+### `npm start`
 
-OpenJDK Java 8 (8u362-b09): <br>
--Java 8 required <br> &emsp;
-https://www.openlogic.com/openjdk-downloads <br> &emsp;
-https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u362-b09/openlogic-openjdk-8u362-b09-windows-x64.zip
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-<br>
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Development Tools:
+### `npm test`
 
-Visual Studio Code: <br>
--Has useful extensions for Java and Maven as well as built in terminal <br> &emsp;
-https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-GitHub Desktop: <br>
--Free source control <br> &emsp;
-https://desktop.github.com/1
-          
-Node (19.8.1): <br>
--Only Necessary for Hot Reload React Development <br> 
--Run npm run start in src/main/react <br> &emsp;
-https://nodejs.org/dist/v19.8.1/ <br> &emsp;
-https://nodejs.org/dist/v19.8.1/node-v19.8.1-x64.msi
-                        
-PostgreSQL (15.2): <br>
--Only needed if using local PostgreSQL Server <br> &emsp;
-https://www.enterprisedb.com/downloads/postgres-postgresql-downloads <br> &emsp;
-https://sbp.enterprisedb.com/getfile.jsp?fileid=1258422
+### `npm run build`
 
-PGAdmin4 (6.21): <br>
--Good for Postgres Database Management and Testing Queries <br> &emsp;
-https://www.postgresql.org/ftp/pgadmin/pgadmin4/v6.21/windows/ <br> &emsp;
-https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v6.21/windows/pgadmin4-6.21-x64.exe
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
