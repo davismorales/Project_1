@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../Button/Button";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
@@ -25,7 +24,7 @@ function Footer() {
           <div class="social-icons">
             <Link
               class="social-icon-link github"
-              to="/"
+              to="https://github.com/davismorales"
               target="_blank"
               aria-label="Github"
             >
@@ -33,7 +32,7 @@ function Footer() {
             </Link>
             <Link
               class="social-icon-link linkedin"
-              to="/"
+              to="https://www.linkedin.com/in/davis-morales"
               target="_blank"
               aria-label="LinkedIn"
             >

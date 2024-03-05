@@ -6,30 +6,24 @@ import { Button } from "../Button/Button";
 function HeroSection() {
   return (
     <div className="hero-container">
-      {/* <video
-        src={require("../../assets/videos/ja_dunks.mp4")}
-        autoPlay
-        loop
-        muted
-      /> */}
-      <h1>ADVENTURE AWAITS</h1>
-      <p>What are you waiting for?</p>
+      <h1>Welcome to NBA Reference!</h1>
+      <p>A resource for checking out Game Scores and Team Rosters</p>
       <div className="hero-btns">
         <Button
-          path="/"
+          path="/games"
           className="btns"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
         >
-          GET STARTED
+          Check out Recent Slates of Games
         </Button>
         <Button
-          path="/"
+          path="/players"
           className="btns"
-          buttonStyle="btn--primary"
+          buttonStyle="btn--outline"
           buttonSize="btn--large"
         >
-          WATCH TRAILER <i className="far fa-play-circle" />
+          Look at Team Rosters
         </Button>
       </div>
     </div>

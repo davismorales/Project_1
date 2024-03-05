@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
-import "../Hero/HeroSection.css";
+import "./Players.css";
 import Select from "react-select";
 
 function Players() {
@@ -61,23 +61,11 @@ function Players() {
     } catch (error) {
       console.error(error);
     }
-
-    // await fetch("/nbaApi/getPlayers", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setReturnData(data);
-    //   });
   };
 
   return (
     <div className="player-container">
+      <h1>Select a team to check out their Roster:</h1>
       <div className="player-select">
         <Select
           onChange={(selectedOption) => getPlayers(selectedOption)}
@@ -109,9 +97,6 @@ function Players() {
             <tbody>
               {data.response.map((player) => (
                 <tr key={player.id}>
-                  {/* <td>
-                    <img src={player.image} alt={player.name} />
-                  </td> */}
                   <td>
                     {player.firstname} {player.lastname}
                   </td>

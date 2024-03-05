@@ -18,8 +18,8 @@ function CardItem(props) {
               data-category={props.additionalLabel}
             >
               <img
-                src={props.additionalSrc} // Assuming additionalSrc is the prop for the additional image source
-                alt="Travel"
+                src={props.additionalSrc}
+                alt="Team"
                 className="cards__item__img"
               />
             </figure>
