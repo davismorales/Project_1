@@ -1,9 +1,9 @@
 .player-container > p {
-    margin-top: 8px;
-    color: #fff;
-    font-size: 32px;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 32px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .player-container {
@@ -24,9 +24,9 @@
 }
 
 .roster-container {
-  max-width: 800px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 82vw; /* Adjust as needed */
+  margin-top: 20px;
+  overflow-x: auto;
 }
 
 .roster-table {
@@ -39,6 +39,13 @@
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+}
+
+@media screen and (max-width: 960px) {
+  .roster-table th,
+  .roster-table td {
+    padding: 0.25rem;
+  }
 }
 
 .roster-table th {
