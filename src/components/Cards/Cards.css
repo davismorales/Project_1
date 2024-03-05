@@ -54,6 +54,13 @@ h1 {
   overflow: hidden;
 }
 
+.cards__item__pic-wrap__no-score {
+  position: relative;
+  width: 100%;
+  padding-top: 67%;
+  overflow: hidden;
+}
+
 .cards__item__img-wrap {
   display: flex;
 }
@@ -129,11 +136,11 @@ h1 {
   }
 }
 
-.cards__item__img-wrap .cards__item__pic-wrap {
+.cards__item__img-wrap .cards__item__pic-wrap .cards__item__pic-wrap__no-score{
   flex: 1;
   margin-right: 10px; /* Adjust margin as needed */
 }
 
-.cards__item__img-wrap .cards__item__pic-wrap:last-child {
+.cards__item__img-wrap .cards__item__pic-wrap:last-child .cards__item__pic-wrap__no-score:last-child{
   margin-right: 0;
 }

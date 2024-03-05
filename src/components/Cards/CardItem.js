@@ -8,13 +8,17 @@ function CardItem(props) {
         <Link className="cards__item__link" to={props.path}>
           <div className="cards__item__img-wrap">
             <figure
-              className="cards__item__pic-wrap"
+              className={`${props.hasScore ? 'cards__item__pic-wrap' : 'cards__item__pic-wrap__no-score'}`}
               data-category={props.label}
             >
-              <img src={props.src} alt="Travel" className="cards__item__img" />
+              <img 
+                src={props.src} 
+                alt="Team" 
+                className="cards__item__img" 
+              />
             </figure>
             <figure
-              className="cards__item__pic-wrap"
+              className={`${props.hasScore ? 'cards__item__pic-wrap' : 'cards__item__pic-wrap__no-score'}`}
               data-category={props.additionalLabel}
             >
               <img
