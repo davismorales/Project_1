@@ -31,36 +31,35 @@ const Games = () => {
 
   useEffect(() => {
     editCard();
-    getGames(null, new Date());
+    let date = new Date();
+    date.setHours(0, 0, 0, 0);
+    getGames({$d: date}, date.toISOString().split('T')[0]);
   }, []);
 
   const getGames = async (selectedDate, dateString) => {
-    setIsLoading(true);
-    let date = new Date(dateString);
-    date.setHours(0, 0, 0, 0);
-    let formattedDateWithOrdinal = formatDateForHeader(date);
-    date.setDate(date.getDate() + 1);
-    let correctedDate = date.toISOString().split('T')[0];
+    if(selectedDate != null && dateString != null && dateString != ""){
+      setIsLoading(true);
+      let formattedDateWithOrdinal = formatDateForHeader(selectedDate.$d);
 
-    let url = `https://api-nba-v1.p.rapidapi.com/games?date=${correctedDate}`;
+      let url = `https://api-nba-v1.p.rapidapi.com/games?date=${dateString}`;
 
-    try {
-      const response = await fetch(url, options);
-      const responseText = await response.text();
-      const responseJson = JSON.parse(responseText);
-      setResponseData(responseJson.response);
-      debugger
-      if(responseJson.length === 0)
-        setDateInfo(`No Games Scheduled for ${formattedDateWithOrdinal}`);
-      else if(responseJson.length === 1)
-        setCardLength(1);
-      else if(responseJson.length === 2)
-        setCardLength(2)
-    } catch (error) {
-      console.error(error);
+      try {
+        const response = await fetch(url, options);
+        const responseText = await response.text();
+        const responseJson = JSON.parse(responseText);
+        setResponseData(responseJson.response);
+        if(responseJson.results === 0)
+          setDateInfo(`No Games Scheduled for ${formattedDateWithOrdinal}`);
+        else if(responseJson.results === 1)
+          setCardLength(1);
+        else if(responseJson.results === 2)
+          setCardLength(2)
+      } catch (error) {
+        console.error(error);
+      }
+
+      setIsLoading(false)
     }
-
-    setIsLoading(false)
   };
 
   function formatDateForHeader(date) {
@@ -108,7 +107,7 @@ const Games = () => {
             <div>
               <div className="cards__container">
                 <div className="cards__wrapper">
-                  {responseData.length !== 0 && (
+                  {responseData.results !== 0 && (
                     chunkArray(responseData, cardLength).map((chunk, index) => (
                       <ul className="cards__items" key={index}>
                         {chunk.map((item, innerIndex) => (
